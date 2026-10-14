@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beh Noosh | A Cup of Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying');
+
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+
+        function tryPlay() {
+            music.play().catch(function (err) {
+                console.log('خطا:', err);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            if (wasPlaying !== 'false') {
+                tryPlay();
+            }
+        });
+
+        document.addEventListener('click', function () {
+            if (music.paused) tryPlay();
+        });
+
+        setInterval(function () {
+            sessionStorage.setItem('musicTime', music.currentTime);
+            sessionStorage.setItem('musicPlaying', !music.paused);
+        }, 100);
+    </script>
+    <header class="header">
+        <div class="logo">
+            <span class="lm">Beh Noosh</span>
+            <span class="ls">A Cup of Love</span>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html" class="icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="main">
+            <div class="mt">
+                <h1>Coffee for a Good Day</h1>
+                <p>Good coffee, the start of better moments</p>
+                <a href="shop.html" class="btn">View Products</a>
+            </div>
+            <div class="mi">
+                 <img src="love.jpg" alt="love">
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <section class="cart-banner">
+        <h1>Your Cart</h1>
+        <p>Your selected products, ready to order.</p>
+    </section>
+
+    <section class="cart-content">
+
+        <div class="cart-box">
+
+            <div class="cart-icon">🛒</div>
+
+            <h2>Your Cart is Empty</h2>
+            <p>No products selected yet. Start shopping to add items.</p>
+
+            <a href="shop.html" class="cart-btn">Go to Shop </a>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <div class="f-info">
+
+            <div class="f-item">
+                <span class="f-icon">📍</span>
+                <div>
+
+
+                    <strong>Address</strong>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+            <div class="f-item">
+                <span class="f-icon">📞</span>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+11 33 1910 3061</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">✉️</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">🕒</span>
+
+                <div>
+                    <strong>Working Hours</strong>
+                    <p>daily 11:11 AM - 11:11 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="f-bottom">
+            <p>© 2025, October 2 Beh Noosh. All rights reserved. brewed with love</p>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>

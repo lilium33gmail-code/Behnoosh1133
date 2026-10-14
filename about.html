@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beh Noosh | A Cup of Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying');
+
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+
+        function tryPlay() {
+            music.play().catch(function (err) {
+                console.log('خطا:', err);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            if (wasPlaying !== 'false') {
+                tryPlay();
+            }
+        });
+
+        document.addEventListener('click', function () {
+            if (music.paused) tryPlay();
+        });
+
+        setInterval(function () {
+            sessionStorage.setItem('musicTime', music.currentTime);
+            sessionStorage.setItem('musicPlaying', !music.paused);
+        }, 100);
+    </script>
+
+    <header class="header">
+        <div class="logo">
+            <span class="lm">Beh Noosh</span>
+            <span class="ls">A Cup of Love</span>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html" class="icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="main">
+            <div class="mt">
+                <h1>Coffee for a Good Day</h1>
+                <p>Good coffee, the start of better moments</p>
+                <a href="shop.html" class="btn">View Products</a>
+            </div>
+            <div class="mi">
+                <img src="love.jpg" alt="love">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="about-banner">
+        <h1>Our Story</h1>
+        <p>Where every cup begins a quiet conversation.</p>
+    </section>
+
+    <section class="story">
+
+        <div class="story-image">
+            <img src="coffeeshop.jpg" alt="Coffee Shop">
+        </div>
+
+        <div class="story-text">
+            <h2>Our Story</h2>
+            <p>Beh Noosh was born from a simple belief - that a cup of coffee can hold more than caffeine. it can hold
+                silence, and a pause in the middle of day. We handpick every bean with care, roast it with patience, and
+                serve it with the kind of attention that turns a drink into a moment.
+            </p>
+            <a href="#" class="btn-outline">Read More</a>
+        </div>
+
+    </section>
+
+    <section class="features">
+
+        <div class="feature-title">
+            <h2>Why Beh Noosh?</h2>
+            <p>Because coffee should feel like more than a habit.</p>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">☕</div>
+                <h3>Coffee Quality</h3>
+                <p>Sourced from the world's finest harvests.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Fresh Beans</h3>
+                <p>Roasted in small batches, for a taste that lingers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>Cozy Space</h3>
+                <p>A quiet corner where time slows down.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Our Family</h3>
+                <p>Every guest who walks in, leaves as a friend</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="values">
+
+        <div class="values-image">
+            <img src="coffeebeans.jpg" alt="Coffee beans">
+        </div>
+
+        <div class="values-text">
+            <h2>Our Values</h2>
+            <p>We don't just sell coffee. We protect a ritual — the quiet moment before the day begins, the conversation
+                that lasts longer than expected, the warmth that stays after the cup is empty. At Beh Noosh, every
+                detail is shaped by honesty, patience, and devotion.</p>
+
+            <div class="values-list">
+                <span>❤️ Love for Coffee</span>
+                <span>⭐ Quality First</span>
+                <span>🤝 Honest Hospitality</span>
+                <span>📋 Responsibility</span>
+                <span>💎 Lasting Standards</span>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="f-info">
+
+            <div class="f-item">
+                <span class="f-icon">📍</span>
+                <div>
+
+
+                    <strong>Address</strong>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+            <div class="f-item">
+                <span class="f-icon">📞</span>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+11 33 1910 3061</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">✉️</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">🕒</span>
+
+                <div>
+                    <strong>Working Hours</strong>
+                    <p>daily 11:11 AM - 11:11 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="f-bottom">
+            <p>© 2025, October 2 Beh Noosh. All rights reserved. brewed with love</p>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>

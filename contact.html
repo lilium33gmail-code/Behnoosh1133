@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beh Noosh | A Cup of Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying');
+
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+
+        function tryPlay() {
+            music.play().catch(function (err) {
+                console.log('خطا:', err);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            if (wasPlaying !== 'false') {
+                tryPlay();
+            }
+        });
+
+        document.addEventListener('click', function () {
+            if (music.paused) tryPlay();
+        });
+
+        setInterval(function () {
+            sessionStorage.setItem('musicTime', music.currentTime);
+            sessionStorage.setItem('musicPlaying', !music.paused);
+        }, 100);
+    </script>
+
+    <header class="header">
+        <div class="logo">
+            <span class="lm">Beh Noosh</span>
+            <span class="ls">A Cup of Love</span>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html" class="icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="main">
+            <div class="mt">
+                <h1>Coffee for a Good Day</h1>
+                <p>Good coffee, the start of better moments</p>
+                <a href="shop.html" class="btn">View Products</a>
+            </div>
+            <div class="mi">
+                <img src="love.jpg" alt="love">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="contact-banner">
+        <h1>Contact Us</h1>
+        <p>We're always happy to hear your voice.</p>
+    </section>
+
+    <section class="contact-content">
+
+        <div class="contact-form">
+
+            <h2>Send Message</h2>
+            <p>Have a suggestion or feedback? We'd love to hear from you.</p>
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name">
+
+            <label>Phone Number</label>
+            <input type="text" placeholder="Example: 0912 345 6789">
+
+            <label>Email</label>
+            <input type="email" placeholder="example@email.com">
+
+            <label>Message</label>
+            <textarea placeholder="Write your message here..."></textarea>
+
+            <button class="send-btn">📩 Send Message</button>
+
+        </div>
+
+        <div class="contact-info">
+
+            <h2>Contact Info</h2>
+            <p>You can reach us through any of these ways.</p>
+
+            <div class="info-row">
+                <div class="info-card">
+                    <span class="info-icon">✉️</span>
+                    <h4>Email</h4>
+                    <p>info@behnoosh.com</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">📞</span>
+                    <h4>Phone</h4>
+                    <p>+11 33 1910 3061</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">📷</span>
+                    <h4>Social</h4>
+                    <p>@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-card">
+                    <span class="info-icon">🕐</span>
+                    <h4>Working Hours</h4>
+                    <p>Daily 11:11 AM : 11:11 PM</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">📍</span>
+                    <h4>Address</h4>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+
+            <div class="map">
+                <div class="map-pin">📍</div>
+                <span class="map-label">Beh Noosh Coffee Shop</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <div class="f-info">
+
+            <div class="f-item">
+                <span class="f-icon">📍</span>
+                <div>
+
+
+                    <strong>Address</strong>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+            <div class="f-item">
+                <span class="f-icon">📞</span>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+11 33 1910 3061</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">✉️</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">🕒</span>
+
+                <div>
+                    <strong>Working Hours</strong>
+                    <p>daily 11:11 AM - 11:11 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="f-bottom">
+            <p>© 2025, October 2 Beh Noosh. All rights reserved. brewed with love</p>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beh Noosh | A Cup of Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying');
+
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+
+        function tryPlay() {
+            music.play().catch(function (err) {
+                console.log('خطا:', err);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            if (wasPlaying !== 'false') {
+                tryPlay();
+            }
+        });
+
+        document.addEventListener('click', function () {
+            if (music.paused) tryPlay();
+        });
+
+        setInterval(function () {
+            sessionStorage.setItem('musicTime', music.currentTime);
+            sessionStorage.setItem('musicPlaying', !music.paused);
+        }, 100);
+    </script>
+
+    <header class="header">
+        <div class="logo">
+            <span class="lm">Beh Noosh</span>
+            <span class="ls">A Cup of Love</span>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html" class="icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="main">
+            <div class="mt">
+                <h1>Coffee for a Good Day</h1>
+                <p>Good coffee, the start of better moments</p>
+                <a href="shop.html" class="btn">View Products</a>
+            </div>
+            <div class="mi">
+                <img src="love.jpg" alt="love">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="products">
+
+        <div class="st">
+            <h2>Featured Products</h2>
+            <p>A selection of the best flavors for you</p>
+        </div>
+
+        <div class="pg">
+
+            <div class="pc">
+                <div class="pi">
+                    <img src="arabikaC.jpg" alt="Aarabika Coffee">
+                </div>
+                <h3>Arabika Coffee Beans</h3>
+                <p>High quality beans, perfect for specialty coffee.</p>
+                <div class="pf">
+                    <span class="price">$12.00</span>
+                    <span class="crat">🛒</span>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pi">
+                    <img src="cap.jpg" alt="Cappuccino">
+                </div>
+                <h3>Cappuccino</h3>
+                <p>A perfect blend of espresso, milk and soft foam.</p>
+                <div class="pf">
+                    <span class="price">$7.50</span>
+                    <span class="crat">🛒</span>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pi">
+                    <img src="ice.jpg" alt="Iced Latte">
+                </div>
+                <h3>Iced Latte</h3>
+                <p>A delightful blend of cold coffee and almond milk.</p>
+                <div class="pf">
+                    <span class="price">$9.00</span>
+                    <span class="crat">🛒</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about">
+
+        <div class="ai">
+            <img src="about.jpg" alt="Coffee shop ">
+        </div>
+
+        <div class="at">
+            <h2>About Us</h2>
+            <p>At Beh Noosh, we belive coffee is not just a drink - it's an experience of calm, energy, and pertty good
+                moments.</p>
+            <a href="about.html" class="bo">Learn more</a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="f-info">
+
+            <div class="f-item">
+                <span class="f-icon">📍</span>
+                <div>
+
+
+                    <strong>Address</strong>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+            <div class="f-item">
+                <span class="f-icon">📞</span>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+11 33 1910 3061</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">✉️</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">🕒</span>
+
+                <div>
+                    <strong>Working Hours</strong>
+                    <p>daily 11:11 AM - 11:11 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="f-bottom">
+            <p>© 2025, October 2 Beh Noosh. All rights reserved. brewed with love</p>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>

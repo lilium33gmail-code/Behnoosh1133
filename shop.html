@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beh Noosh | A Cup of Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying');
+
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+
+        function tryPlay() {
+            music.play().catch(function (err) {
+                console.log('خطا:', err);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            if (wasPlaying !== 'false') {
+                tryPlay();
+            }
+        });
+
+        document.addEventListener('click', function () {
+            if (music.paused) tryPlay();
+        });
+
+        setInterval(function () {
+            sessionStorage.setItem('musicTime', music.currentTime);
+            sessionStorage.setItem('musicPlaying', !music.paused);
+        }, 100);
+    </script>
+
+
+    <header class="header">
+        <div class="logo">
+            <span class="lm">Beh Noosh</span>
+            <span class="ls">A Cup of Love</span>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="cart.html" class="icon">🛒</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="main">
+            <div class="mt">
+                <h1>Coffee for a Good Day</h1>
+                <p>Good coffee, the start of better moments</p>
+                <a href="shop.html" class="btn">View Products</a>
+            </div>
+            <div class="mi">
+                 <img src="love.jpg" alt="love">
+            </div>
+        </section>
+
+    </main>
+
+    <section class="shop-banner">
+        <h1>Coffee Shop</h1>
+        <p>High quality coffee, for your better moments.</p>
+    </section>
+
+    <section class="shop-contant">
+        <aside class="sidebar">
+
+            <div class="stt">
+                <h3>Product Categories</h3>
+            </div>
+
+            <div class="si active">All Products</div>
+            <div class="si">Coffee Beans</div>
+            <div class="si">Ground Coffee</div>
+            <div class="si">Capsules</div>
+            <div class="si">Instant Coffee</div>
+            <div class="si">Accessories</div>
+
+
+
+            <div class="stt">
+                <h3>Price Range</h3>
+            </div>
+
+            <div class="pr">
+                <input type="ّtext" placeholder="From">
+                <input type="text" placeholder="To">
+            </div>
+
+            <button class="fb">Filter</button>
+
+        </aside>
+
+        <div class="shop-products">
+
+            <div class="shop-toolbar">
+                <span>8 Products</span>
+                <select>
+                    <option>Newest First</option>
+                    <option>Cheapest</option>
+                    <option>Most Expensive</option>
+                </select>
+            </div>
+
+            <div class="shop-grid">
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="espresso.jpg" alt="Espresso">
+                    </div>
+
+                    <h3>Espresso</h3>
+                    <p>Rich and bold, the foundation of every coffee drink</p>
+                    <div class="sf">
+                        <span class="price">$6.00</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="cappuccino.jpg" alt="Cappuccino">
+                    </div>
+
+                    <h3>Cappuccino</h3>
+                    <p>Espresso with steamed milk and soft foam top.</p>
+                    <div class="sf">
+                        <span class="price">$7.50</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="latte.jpg" alt="Latte">
+                    </div>
+
+                    <h3>Latte</h3>
+                    <p>Smooth and creamy, with extra steamed milk.</p>
+                    <div class="sf">
+                        <span class="price">$7.00</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="americano.jpg" alt="Americano">
+                    </div>
+
+                    <h3>Americano</h3>
+                    <p>Espresso with hot water, bold and simple.</p>
+                    <div class="sf">
+                        <span class="price">$5.50</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="macchiato.jpg" alt="Macchiato">
+                    </div>
+
+                    <h3>macchiato</h3>
+                    <p>Espresso with a touch of milk, small and strong.</p>
+                    <div class="sf">
+                        <span class="price">$6.50</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="mocha.jpg" alt="Mocha">
+                    </div>
+
+                    <h3>Mocha</h3>
+                    <p>Espresso, chocolate, and milk - a sweet delight.</p>
+                    <div class="sf">
+                        <span class="price">$8.00</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="flatwhite.jpg" alt="Flat white">
+                    </div>
+
+                    <h3>Flat white</h3>
+                    <p>Smooth and balanced, with velvety steamed milk.</p>
+                    <div class="sf">
+                        <span class="price">$7.50</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+                <div class="sc">
+                    <div class="sim">
+                        <img src="coldbrew.jpg" alt="Coldbrew">
+                    </div>
+
+                    <h3>Coldbrew</h3>
+                    <p>Smooth cold-brewed coffee, served chilled over ice.</p>
+                    <div class="sf">
+                        <span class="price">$6.50</span>
+                        <span class="cart">🛒</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="f-info">
+
+            <div class="f-item">
+                <span class="f-icon">📍</span>
+                <div>
+
+
+                    <strong>Address</strong>
+                    <p>11 Heaven St, Dreamland</p>
+                </div>
+            </div>
+            <div class="f-item">
+                <span class="f-icon">📞</span>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+11 33 1910 3061</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">✉️</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@behnoosh</p>
+                </div>
+            </div>
+
+            <div class="f-item">
+                <span class="f-icon">🕒</span>
+
+                <div>
+                    <strong>Working Hours</strong>
+                    <p>daily 11:11 AM - 11:11 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="f-bottom">
+            <p>© 2025, October 2 Beh Noosh. All rights reserved. brewed with love</p>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>
